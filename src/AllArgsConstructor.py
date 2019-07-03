@@ -1,15 +1,4 @@
-def ForAttr(cls):
-    def decorator(func):
-        def result(self = None, *a, **kw):
-            for attr in [
-                attr for attr in dir(cls)
-                if not attr.startswith('__')
-                and not callable(getattr(cls, attr))
-            ]:
-                func(self, attr, *a, **kw)
-
-        return result
-    return decorator
+from .ForAttr import *
 
 def AllArgsConstructor(required = False):
     def decorator(cls):
@@ -33,20 +22,3 @@ def AllArgsConstructor(required = False):
 
         return cls
     return decorator
-
-
-@AllArgsConstructor()
-class C:
-    euq = 'default'
-    p = ''
-    f=None
-    pass
-
-# c = C()
-# print(c.euq)
-c = C(euq="EUQ2", p="q", h=1, f='1')
-
-@ForAttr(cls = C)
-def printe(self, attr): print(getattr(c, attr))
-
-printe()
