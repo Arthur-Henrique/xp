@@ -12,11 +12,11 @@ class AllArgsConstructor:
 
             nonPresentArgs = []
             @ForAttr(cls = cls)
-            def setAttributes(obj, attr, *a, **kw):
+            def setAttributes(obj, __attr__, *a, **kw):
                 try:
-                    setattr(obj, attr, kw[attr])
+                    setattr(obj, __attr__, kw[__attr__])
                 except KeyError:
-                    nonPresentArgs.append(attr)
+                    nonPresentArgs.append(__attr__)
 
             setAttributes(obj, *a, **kw)
 
