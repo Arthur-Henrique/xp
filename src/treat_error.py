@@ -16,3 +16,24 @@ def expectError(expected_errors, resolve = None):
 
         return do
     return decorator
+
+
+class NonExpectError:
+    msg = None
+
+    def __init__(self, msg):
+        self.msg = msg
+
+    def __call__(self, func):
+
+        def decoreted(__self__, *a, **kw):
+            try:
+                func(__self__, *a, **kw)
+            except:
+                pass
+            else:
+                pass
+            finally:
+                pass
+
+        return decoreted

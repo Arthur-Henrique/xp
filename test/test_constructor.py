@@ -1,12 +1,13 @@
 from unittest import TestCase
-from src.AllArgsConstructor import *
-from src.ExpectError import *
+from src.constructor import *
+from src.treat_error import *
 
 class AllArgsConstructorTestCase(TestCase):
+
     def test_defaultUnrequired(self):
 
         @AllArgsConstructor()
-        class Cls():
+        class Cls:
             pass
 
         try:
